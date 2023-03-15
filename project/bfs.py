@@ -3,7 +3,13 @@ from typing import List
 
 
 def bfs(graph: Matrix, source: int) -> List[int]:
+    """
+    BFS for directed graph with source vertex
 
+    :param graph: boolean adjacency matrix of graph
+    :param source: source vertex
+    :return: list where i-th element is distance to i-th graph vertex
+    """
     assert graph.type == BOOL
     assert graph.square
     assert source in range(graph.nrows)
