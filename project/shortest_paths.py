@@ -77,7 +77,8 @@ def apsp(graph: Matrix) -> List[Tuple[int, List[int]]]:
             raise ValueError("Negative cycle detected")
 
     return [
-        (i, [dists.get(i, j, default=math.inf) for j in range(graph.nrows)]) for i in range(graph.nrows)
+        (i, [dists.get(i, j, default=math.inf) for j in range(graph.nrows)])
+        for i in range(graph.nrows)
     ]
 
 
