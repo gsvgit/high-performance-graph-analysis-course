@@ -1,5 +1,6 @@
 from pygraphblas import Matrix, FP64
 import math
+import networkx as nx
 
 from typing import List, Tuple
 
@@ -87,3 +88,12 @@ def _zeros_on_main_diag(matrix: Matrix) -> Matrix:
     for i in range(matrix.ncols):
         copy[i, i] = 0.0
     return copy
+
+
+def nx_graph_to_matrix(graph) -> Matrix:
+    mat = Matrix.from_scipy_sparse(
+        nx.to_scipy_sparse_array(graph).astype(float, copy=False)
+    )
+    mat.eadd(Matrix.identity(FP64, mat.nrows, value=0), out=mat)
+
+    return mat
