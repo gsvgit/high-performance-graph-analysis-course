@@ -74,7 +74,7 @@ class DynSssp:
                 if curr_dists[u] != self.dists[u]:
                     q.add(u, min(curr_dists[u], self.dists[u]))
                 else:
-                    if v in q.entry_map:
+                    if v in q._entry_map:
                         q.remove(v)
 
     def get_dists(self):
